@@ -2,14 +2,21 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import RecipeCard from "./../RecipeCard/RecipeCard";
 import "./Home.css";
+import store from '../../store';
 
 class Home extends Component {
   constructor(props) {
     super(props);
+    const ReduxState = store.getState();
     this.state = {
-      recipes: []
+      recipes: ReduxState.recipes
     };
   }
+
+  // clearInput(){
+  //   document.getElementById("category_select").value = "";
+  //   document.getElementById("recipe_name").value = "";
+  // }
 
   render() {
     const recipes = this.state.recipes.map((recipe, i) => {
@@ -34,6 +41,6 @@ class Home extends Component {
       </div>
     );
   }
-}
+  }
 
 export default Home;
